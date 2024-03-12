@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreHaptics
 
 struct Movement: View {
     @State var message: String?
@@ -16,8 +17,9 @@ struct Movement: View {
             Text(message ?? "Shake me!")
                 .font(.title)
                 .onShake {
-                    message = "Shakie Shakie"
+                    message = "Shakie Shakie 🫨"
                     ShakeDetected = true
+                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                 }
             if(ShakeDetected) {
                 Button() {
